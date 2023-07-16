@@ -1,5 +1,4 @@
 import React from 'react';
-
 import styles from '../Home/CountryCard.module.css';
 
 const CountryCard = ({ country }) => {
