@@ -6,7 +6,7 @@ import styles from './Home.module.css';
 import { getAllCountries, getCountriesByName } from '../../services/api';
 import CountriesList from './CountriesPage';
 import Pagination from './Pagination';
-import imageSource from '../../assets/61755.jpg';
+import imageSource from '../../assets/61766.jpg';
 
 const Home = () => {
   const [countries, setCountries] = useState([]);

@@ -13,11 +13,19 @@ const Pagination = ({ totalCountries, countriesPerPage, onPageChange }) => {
     onPageChange(newCurrentPage); // llama a onPageChange cuando cambias de página
   };
 
+  const handlePreviousClick = () => {
+    handleClick(currentPage - 1);
+  };
+
+  const handleNextClick = () => {
+    handleClick(currentPage + 1);
+  };
+
   return (
     <div className={styles.pagination}>
-      <span 
-        className={`${styles.pageItem} ${currentPage === 1 ? styles.disabled : ''}`} 
-        onClick={() => handleClick(currentPage - 1)}
+      <span
+        className={`${styles.pageItem} ${currentPage === 1 ? styles.disabled : ''}`}
+        onClick={handlePreviousClick}
       >
         Previous
       </span>
@@ -30,9 +38,9 @@ const Pagination = ({ totalCountries, countriesPerPage, onPageChange }) => {
           {index + 1}
         </span>
       ))}
-      <span 
-        className={`${styles.pageItem} ${currentPage === totalPages ? styles.disabled : ''}`} 
-        onClick={() => handleClick(currentPage + 1)}
+      <span
+        className={`${styles.pageItem} ${currentPage === totalPages ? styles.disabled : ''}`}
+        onClick={handleNextClick}
       >
         Next
       </span>

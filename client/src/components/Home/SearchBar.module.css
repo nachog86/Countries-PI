@@ -1,0 +1,30 @@
+
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1em;
+    font-size: 3em;
+    
+  }
+  
+  .button {
+    padding: 0.5em 1em;
+    font-size: 1em;
+    color: #ffffff;
+    background-color: transparent;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease;
+    box-shadow: 0 0 20px rgba(246, 243, 243, 0.25);
+  }
+  
+  .button:hover {
+    box-shadow: 0 0 100px rgba(246, 243, 243, 0.25);
+  }
+  
+  .button:focus {
+    outline: none;
+  }

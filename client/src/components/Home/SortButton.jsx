@@ -1,3 +1,5 @@
+import styles from './SortButton.module.css';
+
 const SortButton = ({ sortConfig, setSortConfig }) => {
   const handleSort = (key) => {
     setSortConfig(prevState => {
@@ -9,14 +11,15 @@ const SortButton = ({ sortConfig, setSortConfig }) => {
   };
 
   return (
-    <div>
-      <button onClick={() => handleSort('name')}>Ordenar por nombre</button>
-      <button onClick={() => handleSort('population')}>Ordenar por población</button>
+    <div className={styles.navbar}>
+      <button className={styles.button} onClick={() => handleSort('name')}>Ordenar por nombre</button>
+      <button className={styles.button} onClick={() => handleSort('population')}>Ordenar por población</button>
     </div>
   );
 };
 
 export default SortButton;
+
 
 
 

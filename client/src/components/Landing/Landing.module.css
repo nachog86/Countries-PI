@@ -27,10 +27,25 @@
 }
 
 .backgroundImage button {
-  padding: 10px 20px;
-  font-size: 1.2rem;
+  padding: 1em 1.5em; /* Ajusta el tamaño del padding */
+  font-size: 1.5em; /* Ajusta el tamaño de fuente */
   margin-top: 20px;
   cursor: pointer;
+  color: #ffffff;
+  background-color: transparent;
+  border: none;
+  border-radius: 30px;
+  transition: box-shadow 0.3s ease;
+  box-shadow: 0 0 50px rgba(300, 300, 300, 0.50);
 }
+
+.backgroundImage button:hover {
+  box-shadow: 0 0 100px rgba(350, 350, 350, 0.75);
+}
+
+.backgroundImage button:focus {
+  outline: none;
+}
+
 
 
