@@ -5,12 +5,10 @@
   overflow: hidden;
 }
 
-.backgroundVideo {
-  position: absolute;
+.backgroundImage {
+  object-fit: cover;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  z-index: -1;
 }
 
 .overlay {
@@ -19,40 +17,29 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  padding: 0 20px;
-  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
-.title {
-  font-size: 2.5em;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
-
-.subtitle {
-  font-size: 1.5em;
-}
-
-.buttons {
+.topControls {
   position: absolute;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 0;
+  left: 0;
+  width: 100%;
   display: flex;
-  gap: 10px;
+  justify-content: space-between;
+  padding: 1em;
+  box-sizing: border-box;
+  color: #fff;
 }
 
-.searchBar {
+.content {
   position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 50px; /* Ajusta esto según el tamaño de tus controles superiores */
+  left: 0;
+  width: 100%;
+  height: calc(100% - 50px); /* Ajusta esto según el tamaño de tus controles superiores */
+  overflow: auto;
+  box-sizing: border-box;
 }
 
 

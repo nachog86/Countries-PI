@@ -8,12 +8,12 @@
     margin: 20px;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 20px rgba(246, 243, 243, 0.25);
     transition: box-shadow 0.3s ease-in-out;
   }
   
   .country-card:hover {
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 0 40px rgba(246, 243, 243, 0.25);
   }
   
   .country-flag {
@@ -25,11 +25,12 @@
     margin: 0;
     font-size: 1.2em;
     font-weight: bold;
+    color: white;
   }
   
   .country-continent {
     margin: 0;
     font-size: 1em;
-    color: #666666;
+    color:white;
   }
   

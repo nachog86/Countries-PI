@@ -1,13 +1,22 @@
-import React from 'react';
+const SortButton = ({ sortConfig, setSortConfig }) => {
+  const handleSort = (key) => {
+    setSortConfig(prevState => {
+      if (prevState.key === key && prevState.direction === 'asc') {
+        return { key, direction: 'desc' };
+      }
+      return { key, direction: 'asc' };
+    });
+  };
 
-const SortButtons = () => {
-    return (
-        <div>
-            <button>Ordenar por nombre</button>
-            <button>Ordenar por población</button>
-        </div>
-    )
-}
+  return (
+    <div>
+      <button onClick={() => handleSort('name')}>Ordenar por nombre</button>
+      <button onClick={() => handleSort('population')}>Ordenar por población</button>
+    </div>
+  );
+};
 
-export default SortButtons;
+export default SortButton;
+
+
 
