@@ -11,7 +11,7 @@
   font-size: 0.8em; /* Reducir el tamaño de fuente */
   color: #ffffff;
   background-color: transparent;
-  border: none;
+  border: 0.5px solid #ffffff;
   border-radius: 10px;
   cursor: pointer;
   transition: box-shadow 0.3s ease;

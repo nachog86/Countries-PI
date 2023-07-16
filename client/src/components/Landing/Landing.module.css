@@ -9,7 +9,7 @@
 }
 
 .backgroundImage {
-  background-image: url('../../assets/61766.jpg');
+  background-image: url('../../assets/61755.jpg');
   background-size: cover;
   background-position: center;
   width: 100%;
@@ -33,7 +33,7 @@
   cursor: pointer;
   color: #ffffff;
   background-color: transparent;
-  border: none;
+  border: 0.5px solid #ffffff;
   border-radius: 30px;
   transition: box-shadow 0.3s ease;
   box-shadow: 0 0 50px rgba(300, 300, 300, 0.50);
