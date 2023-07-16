@@ -14,16 +14,17 @@ const SearchBar = ({ handleSearch }) => {
   };
 
   return (
-    <div className={styles.searchBar}>
-    <form onSubmit={handleSubmit}>
-      <input 
-        placeholder="Buscar países..."
-        value={inputValue}
-        onChange={handleInputChange}
-      />
-      <button className={styles.button} type="submit">Buscar</button>
-    </form>
-        </div>
+    <div className={styles.navbar}>
+      <form className={styles.searchBar} onSubmit={handleSubmit}>
+        <input 
+          className={styles.searchInput}
+          placeholder="Buscar países..."
+          value={inputValue}
+          onChange={handleInputChange}
+        />
+        <button className={styles.button} type="submit">Buscar</button>
+      </form>
+    </div>
   );
 };
 
