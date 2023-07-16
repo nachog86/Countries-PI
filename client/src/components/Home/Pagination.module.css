@@ -1,0 +1,30 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .pageItem {
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    color: #666;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .pageItem:hover {
+    background-color: #ddd;
+  }
+  
+  .active {
+    background-color: #666;
+    color: #fff;
+  }
+  
+  .disabled {
+    color: #bbb;
+    cursor: not-allowed;
+  }
+  
