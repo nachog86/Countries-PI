@@ -3,16 +3,13 @@ import SearchBar from './SearchBar';
 import FilterButtons from './FilterButtons';
 import styles from './Home.module.css';
 
-// Importar el archivo de video
-import videoSource from '../../assets/images/videoHome.mp4';
+// Importar la imagen
+import backgroundImage from '../../assets/61755.jpg';
 
 const Home = () => {
   return (
     <div className={styles.home}>
-      <video className={styles.backgroundVideo} autoPlay="autoplay" loop="loop" muted>
-        <source src={videoSource} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+      <img className={styles.backgroundImage} src={backgroundImage} alt="Background" />
 
       <div className={styles.overlay}>
         <h1 className={styles.title}>Epic Earth: Descubre, explora y vive</h1>
@@ -29,6 +26,7 @@ const Home = () => {
 };
 
 export default Home;
+
 
 
 
