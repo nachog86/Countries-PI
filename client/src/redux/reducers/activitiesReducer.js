@@ -1,7 +1,7 @@
 import { CREATE_ACTIVITY_START, CREATE_ACTIVITY_SUCCESS, CREATE_ACTIVITY_ERROR } from '../actions/activitiesActions';
 
 const initialState = {
-  activity: null,
+  activity: [],
   loading: false,
   error: null,
 };
