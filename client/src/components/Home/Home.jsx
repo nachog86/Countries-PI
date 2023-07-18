@@ -7,6 +7,9 @@ import { getAllCountries, getCountriesByName } from '../../services/api';
 import CountriesList from './CountriesPage';
 import Pagination from './Pagination';
 import imageSource from '../../assets/61755.jpg'; 
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import { ACTIVITY_FORM_PAGE } from '../../utils/pathRoutes';
+
 
 const Home = () => {
   const [countries, setCountries] = useState([]);
@@ -72,6 +75,8 @@ const Home = () => {
       <img className={styles.backgroundImage} src={imageSource} alt="Fondo" /> 
       <div className={styles.overlay}></div>
       <div className={styles.topControls}>
+        
+        <Link to={ACTIVITY_FORM_PAGE}> <button> Create Activities</button></Link>
         <FilterButtons countries={countries} setFilteredCountries={setFilteredCountries} />
         <SearchBar handleSearch={handleSearch} />
         <SortButton sortConfig={sortConfig} setSortConfig={setSortConfig} />
