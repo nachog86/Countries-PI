@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { getCountryById } from '../../services/api';
 import styles from './Detail.module.css';
 
 const CountryDetailPage = () => {
   const [country, setCountry] = useState(null);
-  const { countryId } = useParams();
+  const { id } = useParams();
 
   useEffect(() => {
     const fetchCountry = async () => {
       try {
-        const response = await getCountryById(countryId);
+        const response = await getCountryById(id);
         setCountry(response);
       } catch (error) {
         console.error('Hubo un error al obtener los detalles del país: ', error);
@@ -18,7 +18,7 @@ const CountryDetailPage = () => {
     };
 
     fetchCountry();
-  }, [countryId]);
+  }, [id]);
 
   // Mientras los datos se están cargando, muestra un mensaje de "cargando..."
   if (!country) {
@@ -28,6 +28,7 @@ const CountryDetailPage = () => {
   // Una vez que los datos se carguen, puedes mostrar los detalles del país
   return (
     <div className={styles.container}>
+      <Link to="/home" className={styles.backLink}>Volver al inicio</Link> {/* Link para volver al inicio */}
       <h1 className={styles.title}>{country.name}</h1>
       <img className={styles.flag} src={country.flagImage} alt={`Bandera de ${country.name}`} />
       <p className={styles.detail}>Continente: {country.continent}</p>
