@@ -1,33 +1,46 @@
-import { CREATE_ACTIVITY_START, CREATE_ACTIVITY_SUCCESS, CREATE_ACTIVITY_ERROR } from '../actions/activitiesActions';
+import {
+  CREATE_ACTIVITY_START,
+  CREATE_ACTIVITY_SUCCESS,
+  CREATE_ACTIVITY_FAIL,
+  GET_ALL_ACTIVITIES_SUCCESS,
+  GET_ALL_ACTIVITIES_FAIL
+} from '../actions/activitiesActions';
 
 const initialState = {
-  activity: [],
-  loading: false,
+  activities: [],
+  creating: false,
   error: null,
 };
 
-const activitiesReducer = (state = initialState, action) => {
+export const activitiesReducer = (state = initialState, action) => {
   switch (action.type) {
     case CREATE_ACTIVITY_START:
       return {
         ...state,
-        loading: true,
+        creating: true,
       };
     case CREATE_ACTIVITY_SUCCESS:
       return {
         ...state,
-        loading: false,
-        activity: action.payload,
+        creating: false,
       };
-    case CREATE_ACTIVITY_ERROR:
+    case CREATE_ACTIVITY_FAIL:
       return {
         ...state,
-        loading: false,
+        creating: false,
+        error: action.payload,
+      };
+    case GET_ALL_ACTIVITIES_SUCCESS:
+      return {
+        ...state,
+        activities: action.payload,
+      };
+    case GET_ALL_ACTIVITIES_FAIL:
+      return {
+        ...state,
         error: action.payload,
       };
     default:
       return state;
   }
 };
-
-export default activitiesReducer;

@@ -6,13 +6,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import store from './redux/store'; // Asegúrate de que la ruta al archivo de tu tienda sea correcta
+import { BrowserRouter } from 'react-router-dom';
 
 axios.defaults.baseURL = 'http://localhost:3001';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
+      <BrowserRouter>
       <App />
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

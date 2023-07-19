@@ -1,28 +1,53 @@
-import { GET_ALL_COUNTRIES_START, GET_ALL_COUNTRIES_SUCCESS, GET_ALL_COUNTRIES_ERROR } from '../actions/countriesActions';
+import {
+  GET_ALL_COUNTRIES_START,
+  GET_ALL_COUNTRIES_SUCCESS,
+  GET_ALL_COUNTRIES_FAIL,
+  GET_COUNTRY_BY_ID_SUCCESS,
+  GET_COUNTRY_BY_ID_FAIL,
+  GET_COUNTRIES_BY_NAME_SUCCESS,
+  GET_COUNTRIES_BY_NAME_FAIL
+} from '../actions/countriesActions';
 
 const initialState = {
   countries: [],
-  loading: false,
+  selectedCountry: null,
   error: null,
 };
 
-const countriesReducer = (state = initialState, action) => {
+export const countriesReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_ALL_COUNTRIES_START:
       return {
         ...state,
-        loading: true,
       };
     case GET_ALL_COUNTRIES_SUCCESS:
       return {
         ...state,
-        loading: false,
         countries: action.payload,
       };
-    case GET_ALL_COUNTRIES_ERROR:
+    case GET_ALL_COUNTRIES_FAIL:
       return {
         ...state,
-        loading: false,
+        error: action.payload,
+      };
+    case GET_COUNTRY_BY_ID_SUCCESS:
+      return {
+        ...state,
+        selectedCountry: action.payload,
+      };
+    case GET_COUNTRY_BY_ID_FAIL:
+      return {
+        ...state,
+        error: action.payload,
+      };
+    case GET_COUNTRIES_BY_NAME_SUCCESS:
+      return {
+        ...state,
+        countries: action.payload,
+      };
+    case GET_COUNTRIES_BY_NAME_FAIL:
+      return {
+        ...state,
         error: action.payload,
       };
     default:
@@ -30,6 +55,5 @@ const countriesReducer = (state = initialState, action) => {
   }
 };
 
-export default countriesReducer;
 
   

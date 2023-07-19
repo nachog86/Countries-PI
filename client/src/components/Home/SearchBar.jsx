@@ -15,7 +15,7 @@ const SearchBar = ({ handleSearch }) => {
 
   return (
     <div className={styles.navbar}>
-      <form className={styles.searchBar} onSubmit={handleSubmit}>
+      <form className={styles.searchBar} onSubmit={(event) => handleSubmit(event)}>
         <input 
           className={styles.searchInput}
           placeholder="Buscar países..."

@@ -1,18 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import SearchBar from './SearchBar';
 import FilterButtons from './FilterButtons';
 import SortButton from './SortButton';
 import styles from './Home.module.css';
-import { getAllCountries, getCountriesByName } from '../../services/api';
+import { getAllCountries, getCountriesByName } from '../../redux/actions/countriesActions';
 import CountriesList from './CountriesPage';
 import Pagination from './Pagination';
-import imageSource from '../../assets/61755.jpg'; 
-import { Link } from 'react-router-dom/cjs/react-router-dom.min';
-import { ACTIVITY_FORM_PAGE } from '../../utils/pathRoutes';
+import imageSource from '../../assets/61755.jpg';
+import { Link } from 'react-router-dom';
+import PathRoutes from '../../utils/pathRoutes';
 
 
 const Home = () => {
-  const [countries, setCountries] = useState([]);
+  const dispatch = useDispatch();
+  const countries = useSelector(state => state.countries.countries);
   const [filteredCountries, setFilteredCountries] = useState([]);
   const [sortConfig, setSortConfig] = useState({ key: null, direction: 'asc' });
   const [currentPage, setCurrentPage] = useState(1);
@@ -20,28 +22,16 @@ const Home = () => {
   const countriesPerPage = 10;
 
   useEffect(() => {
-    const fetchCountries = async () => {
-      const data = await getAllCountries();
-      setCountries(data);
-      setFilteredCountries(data);
-    };
-
-    fetchCountries();
-  }, []);
+    dispatch(getAllCountries());
+  }, [dispatch]);
 
   useEffect(() => {
-    const fetchCountries = async () => {
-      if (search) {
-        const data = await getCountriesByName(search);
-        setFilteredCountries(data);
-        setCurrentPage(1);
-      } else {
-        setFilteredCountries(countries);
-      }
-    };
-
-    fetchCountries();
-  }, [search, countries]);
+     
+      dispatch(getCountriesByName());
+      setFilteredCountries(countries);
+      setCurrentPage(1);
+    }, [search]);
+    
 
   useEffect(() => {
     if (sortConfig.key) {
@@ -72,11 +62,10 @@ const Home = () => {
 
   return (
     <div className={styles.home}>
-      <img className={styles.backgroundImage} src={imageSource} alt="Fondo" /> 
+      <img className={styles.backgroundImage} src={imageSource} alt="Fondo" />
       <div className={styles.overlay}></div>
       <div className={styles.topControls}>
-        
-        <Link to={ACTIVITY_FORM_PAGE}> <button> Create Activities</button></Link>
+        <Link to={PathRoutes.ACTIVITY_FORM_PAGE}> <button> Create Activities</button></Link>
         <FilterButtons countries={countries} setFilteredCountries={setFilteredCountries} />
         <SearchBar handleSearch={handleSearch} />
         <SortButton sortConfig={sortConfig} setSortConfig={setSortConfig} />

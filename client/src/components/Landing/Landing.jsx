@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import backgroundImage from '../../assets/61766.jpg';
+import PathRoutes from '../../utils/pathRoutes';
 import styles from './Landing.module.css';
 
 function Landing() {
@@ -8,7 +8,7 @@ function Landing() {
     <div className={styles.landing}>
       <div className={styles.backgroundImage}>
         <h1>Epic Earth: Descubre, explora y vive</h1>
-        <Link to="/home">
+        <Link to={PathRoutes.HOME_PAGE}>
           <button>Ingresar</button>
         </Link>
       </div>

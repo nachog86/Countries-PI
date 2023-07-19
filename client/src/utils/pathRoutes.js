@@ -1,7 +1,11 @@
-export const LANDING_PAGE = "/";
-export const HOME_PAGE = "/home";
-export const DETAIL_PAGE = "/detail/:id";
-export const ACTIVITY_FORM_PAGE = "/activityform"; // Asegúrate de añadir esta línea
+const PathRoutes ={
+    
+    LANDING_PAGE: "/",
+     HOME_PAGE: "/home",
+     DETAIL_PAGE: "/detail/id/",
+     ACTIVITY_FORM_PAGE:"/activityform", 
+}
 
+export default PathRoutes;
 
 
