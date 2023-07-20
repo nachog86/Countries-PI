@@ -5,7 +5,7 @@ import PathRoutes from './utils/pathRoutes.js';
 import Landing from './components/Landing/Landing.jsx';
 import Home from './components/Home/Home.jsx';
 import CountryDetailPage from './components/Detail/Detail.jsx';
-// import ActivityForm from './components/Form/Form.jsx';  
+import ActivityForm from './components/Form/Form.jsx';  
 
 function App() {
   return (
@@ -20,9 +20,9 @@ function App() {
         
         <Route  path={ PathRoutes.DETAIL_PAGE} element={<CountryDetailPage />} />
         
-        {/* <Route path={ACTIVITY_FORM_PAGE}>  
-          <ActivityForm />
-        </Route> */}
+        <Route path={PathRoutes.ACTIVITY_FORM_PAGE} element= {<ActivityForm />}>  
+          
+        </Route>
       
     </Routes>
     </div>

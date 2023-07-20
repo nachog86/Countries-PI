@@ -1,3 +1,4 @@
+
 import api from '../../services/api';
 
 export const CREATE_ACTIVITY_START = 'CREATE_ACTIVITY_START';

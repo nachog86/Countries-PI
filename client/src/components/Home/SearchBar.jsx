@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import styles from './SearchBar.module.css';
-
+import { useDispatch } from 'react-redux';
+import { getCountriesByName } from '../../redux/actions/countriesActions';
 const SearchBar = ({ handleSearch }) => {
   const [inputValue, setInputValue] = useState('');
+  
+  const dispatch = useDispatch();
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
@@ -10,7 +13,8 @@ const SearchBar = ({ handleSearch }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    handleSearch(inputValue);
+    dispatch(getCountriesByName(inputValue));
+    // handleSearch(inputValue);
   };
 
   return (

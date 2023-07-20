@@ -7,8 +7,9 @@ import styles from './Form.module.css';
 
 const ActivityForm = () => {
   const dispatch = useDispatch();
-  const paises = useSelector(state => state.countries);
-
+  const paises = useSelector(state => state.countries) || [];
+  console.log(paises);
+  
   const [activityData, setActivityData] = useState({
     name: '',
     difficulty: '',

@@ -12,7 +12,7 @@ export const GET_COUNTRIES_BY_NAME_FAIL = 'GET_COUNTRIES_BY_NAME_FAIL';
 export const getAllCountries = () => async (dispatch) => {
   dispatch({ type: GET_ALL_COUNTRIES_START });
   try {
-    const response = await api.get('/countries');
+    const response = await axios.get(`http://localhost:3001/countries`);
     dispatch({ type: GET_ALL_COUNTRIES_SUCCESS, payload: response.data });
   } catch (error) {
     dispatch({ type: GET_ALL_COUNTRIES_FAIL, payload: error.response.data });
@@ -30,7 +30,7 @@ export const getCountryById = (id) => async (dispatch) => {
 
 export const getCountriesByName = (name) => async (dispatch) => {
   try {
-    const response = await api.get(`/countries?name=${name}`);
+    const response = await api.get(`/countries/name?name=${name}`);
     dispatch({ type: GET_COUNTRIES_BY_NAME_SUCCESS, payload: response.data });
   } catch (error) {
     dispatch({ type: GET_COUNTRIES_BY_NAME_FAIL, payload: error.response.data });

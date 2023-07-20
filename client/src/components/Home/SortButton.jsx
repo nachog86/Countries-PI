@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from './SortButton.module.css';
 
 const SortButton = ({ sortConfig, setSortConfig }) => {
