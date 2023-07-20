@@ -76,13 +76,18 @@ const getCountryById = async (req, res, next) => {
 const getCountriesByName = async (req, res, next) => {
     try {
         // Obtiene el nombre del país de los parámetros de consulta en la URL
-        const name = req.query.name.toLowerCase();
+        const name = req.query.name;
+
+        // Si no se proporciona un nombre, devuelve un error
+        if (!name) {
+            return res.status(400).send('No country name provided');
+        }
 
         // Busca países en la base de datos que coincidan con el nombre
         const countries = await Country.findAll({
             where: {
                 name: {
-                    [Op.iLike]: `%${name}%`
+                    [Op.iLike]: `%${name.toLowerCase()}%`
                 }
             },
             include: TouristActivity
@@ -101,6 +106,8 @@ const getCountriesByName = async (req, res, next) => {
         next(error);
     }
 }
+
+
 
 // Exportamos las funciones para que puedan ser usadas en otros archivos
 module.exports = {
