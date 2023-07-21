@@ -1,31 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './Detail.module.css';
-
-
 
 import { getCountryById } from '../../redux/actions/countriesActions';
 
 const CountryDetailPage = () => {
-  const [country, setCountry] = useState('');
   const { id } = useParams();
+  const dispatch = useDispatch();
+  const country = useSelector(state => state.countries.selectedCountry);
 
   useEffect(() => {
-    const fetchCountry = async () => {
-      try {
-        const response = await getCountryById(id);
-        setCountry(response);
-      } catch (error) {
-        console.error('Hubo un error al obtener los detalles del país: ', error);
-      }
-    };
-
-    fetchCountry();
-  }, [id]);
+    dispatch(getCountryById(id));
+  }, [dispatch, id]);
 
   if (!country) {
     return <div className={styles.loading}>Cargando detalles del país...</div>;
   }
+else {
 
   return (
     <div className={styles.container}>
@@ -39,6 +31,7 @@ const CountryDetailPage = () => {
       <p className={styles.detail}>Población: {country.population}</p>
     </div>
   );
+}
 };
 
 export default CountryDetailPage;

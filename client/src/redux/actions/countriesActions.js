@@ -21,7 +21,7 @@ export const getAllCountries = () => async (dispatch) => {
 
 export const getCountryById = (id) => async (dispatch) => {
   try {
-    const {data} = await axios.get(`http://localhost:3001/countries/id${id}`);
+    const {data} = await api.get(`/countries/id/${id}`);
     dispatch({ type: GET_COUNTRY_BY_ID_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: GET_COUNTRY_BY_ID_FAIL, payload: error.data });

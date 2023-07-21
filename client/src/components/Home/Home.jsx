@@ -12,7 +12,6 @@ import imageSource from '../../assets/61755.jpg';
 import { Link } from 'react-router-dom';
 import PathRoutes from '../../utils/pathRoutes';
 
-
 const Home = () => {
   const dispatch = useDispatch();
   const countries = useSelector(state => state.countries.countries)||[];
@@ -21,22 +20,25 @@ const Home = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [search, setSearch] = useState('');
   const countriesPerPage = 10;
+  const [currentCountries, setCurrentCountries] = useState([]);
 
   useEffect(() => {
     dispatch(getAllCountries());
+    setFilteredCountries(countries);
   }, [dispatch]);
 
   useEffect(() => {
-     
-      dispatch(getCountriesByName());
+    if (search) {
+      dispatch(getCountriesByName(search));
+    } else {
       setFilteredCountries(countries);
-      setCurrentPage(1);
-    }, [search]);
-    
+    }
+    setCurrentPage(1);
+  }, [search, dispatch, countries, setFilteredCountries]);
 
   useEffect(() => {
     if (sortConfig.key) {
-      const sortedCountries = [...filteredCountries].sort((a, b) => {
+      const sortedCountries = [...countries].sort((a, b) => {
         if (a[sortConfig.key] < b[sortConfig.key]) {
           return sortConfig.direction === 'asc' ? -1 : 1;
         }
@@ -46,19 +48,19 @@ const Home = () => {
         return 0;
       });
       setFilteredCountries(sortedCountries);
+    } else {
+      setFilteredCountries(countries);
     }
-  }, [sortConfig, filteredCountries]);
-
-  // const handleSearch = (searchValue) => {
-  //   setSearch(searchValue);
-  // };
+  }, [sortConfig, countries]);
 
   const indexOfLastCountry = currentPage * countriesPerPage;
   const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
-  // const currentCountries = filteredCountries.slice(indexOfFirstCountry, indexOfLastCountry);
-  const currentCountries = Array.isArray(countries) 
-  ? countries.slice(indexOfFirstCountry, indexOfLastCountry) 
-  :[countries];
+
+  useEffect(() => {
+    const currentCountries = filteredCountries.slice(indexOfFirstCountry, indexOfLastCountry);
+    setCurrentCountries(currentCountries);
+  }, [filteredCountries, indexOfFirstCountry, indexOfLastCountry]);
+
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
@@ -82,6 +84,8 @@ const Home = () => {
 };
 
 export default Home;
+
+
 
 
 

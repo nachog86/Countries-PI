@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import styles from './CountryCard.module.css';
 
 const CountryCard = ({ country }) => {
-  console.log("Datos del país: ", country);  // Esto imprimirá los datos del país en la consola
   
   if (!country.id) {
     return null;

@@ -4,14 +4,17 @@ import style from './FilterButtons.module.css';
 const FilterButtons = ({ setFilteredCountries, countries, activities }) => {
 
   const handleFilterByContinent = (continent) => {
-    if (countries) { // Chequear si 'countries' está definido antes de llamar 'filter'
+    console.log('handleFilterByContinent llamado con:', continent);
+    if (countries) { 
       const filtered = countries.filter(country => country.continent === continent);
+      console.log('filtered:', filtered);
       setFilteredCountries(filtered);
+      
     }
   };
 
   const handleFilterByActivity = (activityName) => {
-    if (countries) { // Lo mismo aquí
+    if (countries) { 
       const filtered = countries.filter(country => 
         country.activities.some(activity => activity.name === activityName)
       );

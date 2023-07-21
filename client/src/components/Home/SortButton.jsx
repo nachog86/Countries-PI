@@ -3,13 +3,16 @@ import styles from './SortButton.module.css';
 
 const SortButton = ({ sortConfig, setSortConfig }) => {
   const handleSort = (key) => {
+    console.log('handleSort llamado con:', key);
     setSortConfig(prevState => {
-      if (prevState.key === key && prevState.direction === 'asc') {
-        return { key, direction: 'desc' };
-      }
-      return { key, direction: 'asc' };
+      const newSortConfig = (prevState.key === key && prevState.direction === 'asc')
+        ? { key, direction: 'desc' }
+        : { key, direction: 'asc' };
+      console.log('newSortConfig:', newSortConfig);
+      return newSortConfig;
     });
   };
+  
 
   return (
     <div className={styles.navbar}>
