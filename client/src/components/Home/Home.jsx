@@ -14,7 +14,7 @@ import PathRoutes from '../../utils/pathRoutes';
 
 const Home = () => {
   const dispatch = useDispatch();
-  const countries = useSelector(state => state.countries.countries)||[];
+  const countries = useSelector(state => state.countries.searchedCountries)||[];
   const [filteredCountries, setFilteredCountries] = useState([]);
   const [sortConfig, setSortConfig] = useState({ key: null, direction: 'asc' });
   const [currentPage, setCurrentPage] = useState(1);
@@ -84,7 +84,6 @@ const Home = () => {
 };
 
 export default Home;
-
 
 
 

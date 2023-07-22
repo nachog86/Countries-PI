@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './Detail.module.css';
+import {useNavigate} from 'react-router-dom'
 
 import { getCountryById } from '../../redux/actions/countriesActions';
 
@@ -9,6 +10,7 @@ const CountryDetailPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const country = useSelector(state => state.countries.selectedCountry);
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getCountryById(id));
@@ -21,7 +23,13 @@ else {
 
   return (
     <div className={styles.container}>
-      <Link to="/home" className={styles.backLink}>Volver al inicio</Link>
+      
+      <button 
+                className={styles.button}
+                onClick={() => navigate('/home')}
+            >
+                Volver al inicio
+            </button>
       <h1 className={styles.title}>{country.name}</h1>
       <img className={styles.flag} src={country.flagImage} alt={`Bandera de ${country.name}`} />
       <p className={styles.detail}>Continente: {country.continent}</p>

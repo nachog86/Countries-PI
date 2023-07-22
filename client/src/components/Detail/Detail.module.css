@@ -35,5 +35,25 @@
     text-align: center;
   }
   
+  .button {
+    padding: 0.5em 1em;
+    font-size: 1em;
+    color: #ffffff;
+    background-color:transparent;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 0 20px rgba(246, 243, 243, 0.25)
+  }
+  
+  .button:hover {
+    background-color: transparent;
+    box-shadow: 0 0 100px rgba(246, 243, 243, 0.25);
+  }
+  
+  .button:focus {
+    outline: none;
+  }
   
   

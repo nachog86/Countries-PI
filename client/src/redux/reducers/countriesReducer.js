@@ -10,6 +10,7 @@ import {
 
 const initialState = {
   countries: [],
+  searchedCountries: [],
   selectedCountry: null,
   error: null,
 };
@@ -24,6 +25,7 @@ export const countriesReducer = (state = initialState, action) => {
       return {
         ...state,
         countries: action.payload,
+        searchedCountries: action.payload,
       };
     case GET_ALL_COUNTRIES_FAIL:
       return {
@@ -43,7 +45,7 @@ export const countriesReducer = (state = initialState, action) => {
     case GET_COUNTRIES_BY_NAME_SUCCESS:
       return {
         ...state,
-        countries: action.payload,
+        searchedCountries: action.payload,
       };
     case GET_COUNTRIES_BY_NAME_FAIL:
       return {
