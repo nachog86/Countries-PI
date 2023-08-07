@@ -18,9 +18,11 @@ const Home = () => {
   const [filteredCountries, setFilteredCountries] = useState([]);
   const [sortConfig, setSortConfig] = useState({ key: null, direction: 'asc' });
   const [currentPage, setCurrentPage] = useState(1);
-  const [search, setSearch] = useState('');
+  const [search] = useState('');
   const countriesPerPage = 10;
   const [currentCountries, setCurrentCountries] = useState([]);
+  
+ 
 
   useEffect(() => {
     dispatch(getAllCountries());
@@ -34,7 +36,8 @@ const Home = () => {
       setFilteredCountries(countries);
     }
     setCurrentPage(1);
-  }, [search, dispatch, countries, setFilteredCountries]);
+    
+  }, [search, dispatch, setFilteredCountries]);
 
   useEffect(() => {
     if (sortConfig.key) {
@@ -70,7 +73,7 @@ const Home = () => {
       <img className={styles.backgroundImage} src={imageSource} alt="Fondo" />
       <div className={styles.overlay}></div>
       <div className={styles.topControls}>
-        <Link to={PathRoutes.ACTIVITY_FORM_PAGE}> <button> Create Activities</button></Link>
+        <Link to={PathRoutes.ACTIVITY_FORM_PAGE}> <button> Crear Actvidad </button></Link>
         <FilterButtons countries={countries} setFilteredCountries={setFilteredCountries} />
         <SearchBar handleSubmit={handleSubmit} />
         <SortButton sortConfig={sortConfig} setSortConfig={setSortConfig} />
@@ -84,6 +87,7 @@ const Home = () => {
 };
 
 export default Home;
+
 
 
 

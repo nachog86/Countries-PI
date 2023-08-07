@@ -1,15 +1,19 @@
 import React from 'react';
 import style from './FilterButtons.module.css';
+import { useState } from 'react';
+
 
 const FilterButtons = ({ setFilteredCountries, countries, activities }) => {
+  const [currentCountries, setCurrentCountries] = useState([]); 
 
   const handleFilterByContinent = (continent) => {
     console.log('handleFilterByContinent llamado con:', continent);
+    
     if (countries) { 
       const filtered = countries.filter(country => country.continent === continent);
       console.log('filtered:', filtered);
       setFilteredCountries(filtered);
-      
+      setCurrentCountries(...currentCountries, filtered)
     }
   };
 
